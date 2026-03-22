@@ -1,8 +1,5 @@
 # MSS_ADVANCE Revenge
 
-## Challenge Description
-Last time we went easy on you. You'll never get the flag this time! `chall.py` `output.txt`
-
 ## Vulnerability
 We are given two files, `chall.py` and `output.txt`. Inside `output.txt` we have a 1024-bit prime `p`, 20 pairs `(x, y)` where `y = P(x) mod p`, and an AES-CBC encrypted flag.
 
@@ -18,7 +15,7 @@ for i in range(29):
 Every coefficient is a SHA256 digest (exactly 256 bits). The prime `p` is 1024 bits. This is a 4x size gap. This gap is the vulnerability.
 
 ## The Attack: LLL Lattice Reduction
-After giving all of the information to Claude (Sonnet 4.6) he constructed a 51×51 integer matrix (20 pairs + 30 coefficients + 1 tag row) encoding the constraint `A·c ≡ y (mod p)`. He then crafted a solution script:
+After giving the information I had discovered to Claude (Sonnet 4.6) he constructed a 51×51 integer matrix (20 pairs + 30 coefficients + 1 tag row) encoding the constraint `A·c ≡ y (mod p)`. He then crafted a solution script:
 ```
 from fpylll import IntegerMatrix, LLL
 from Crypto.Util.number import long_to_bytes, bytes_to_long
@@ -65,4 +62,4 @@ for row_idx in range(dim):
         continue
 ```
 
-This script outputs the flag `picoCTF{redacted}`.
+This script output the flag when it finished.
