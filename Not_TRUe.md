@@ -19,7 +19,7 @@ The challenge name "Not TRUe" hints at truncation. In cryptographic implementati
 5. Retreive the flag
 
 ## Script
-We can give all of our information to Claude and get a script to brute force it.
+We told to Claude to make a script to brute force it with the information we had gathered. It returned this.
 ```
 
 from pwn import *
@@ -148,3 +148,4 @@ first, then raw
 
 solve()
 ```
+That led us to get the flag via bruteforcing the file.
